@@ -7,6 +7,8 @@
 <title>Painel Administrativo</title>
 </head>
 <body>
-<h3>Painel Administrativo</h3>
+<div class="container">
+	<h3>Painel Administrativo</h3>
+</div>
 </body>
 </html>
