@@ -19,4 +19,13 @@
     <servlet-name>ServletLogin</servlet-name>
     <url-pattern>/ServletLogin</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>FilterAdmin</display-name>
+    <filter-name>FilterAdmin</filter-name>
+    <filter-class>filter.FilterAdmin</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FilterAdmin</filter-name>
+    <url-pattern>/FilterAdmin</url-pattern>
+  </filter-mapping>
 </web-app>
