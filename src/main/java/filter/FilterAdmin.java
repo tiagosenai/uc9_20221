@@ -1,7 +1,10 @@
 package filter;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 
+import conexao.ConexaoBanco;
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.FilterConfig;
@@ -18,12 +21,20 @@ import jakarta.servlet.http.HttpSession;
 public class FilterAdmin extends HttpFilter implements Filter {
 	private static final long serialVersionUID = 1L;
 
+	private static Connection conn;
+	
 	public FilterAdmin() {
     }
 
 	public void destroy() {
 		// Encerrar processos quando o servidor for parado
 		// Encerra uma conexão com banco
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -50,6 +61,7 @@ public class FilterAdmin extends HttpFilter implements Filter {
 
 	public void init(FilterConfig fConfig) throws ServletException {
 		// Iniciar a conexão com o Banco
+		conn = ConexaoBanco.getConnection();
 	}
 
 }

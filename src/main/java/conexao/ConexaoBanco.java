@@ -24,7 +24,7 @@ public class ConexaoBanco {
 	private static void conectar() {
 		try {
 			if (conn == null) {
-				Class.forName("com.mysql.jdbc.Driver");
+				Class.forName("com.mysql.cj.jdbc.Driver");
 				conn = DriverManager.getConnection(banco, usuario, senha);
 				conn.setAutoCommit(false);
 			}

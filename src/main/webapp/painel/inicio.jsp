@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="container">
-	<h3>Painel Administrativo</h3>
+	<h3>Painel Administrativo - </h3>
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
@@ -40,7 +40,7 @@
         </li>
       </ul>
       <form class="d-flex" role="search">
-      	<a class="nav-link" href="login.jsp">Logout(Sair)</a>
+      	<a class="nav-link" href="ServletOi?acao=logout"><%= request.getParameter("usuario") %> - Logout(Sair)</a>
       </form>
     </div>
   </div>
