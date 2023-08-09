@@ -42,20 +42,34 @@ public class FilterAdmin extends HttpFilter implements Filter {
 		// Validar a autenticação
 		// Commit & Roolback
 		// Validar e Redirecionar páginas da aplicação
-		HttpServletRequest req = (HttpServletRequest) request;
-		HttpSession sessao = req.getSession();
-		
-		String usuarioLogado = (String) sessao.getAttribute("usuario");
-		String urlAutenticar = req.getServletPath();
-		
-		if (usuarioLogado == null && !urlAutenticar.equalsIgnoreCase("/painel/ServletOi")) {
-			//Correção da Linha de redirecionamento
-			RequestDispatcher redireciona = request.getRequestDispatcher("/login.jsp");
-			request.setAttribute("mensagem", "Por favor efetue o Login!");
+		try {
+			HttpServletRequest req = (HttpServletRequest) request;
+			HttpSession sessao = req.getSession();
+			
+			String usuarioLogado = (String) sessao.getAttribute("usuario");
+			String urlAutenticar = req.getServletPath();
+			
+			if (usuarioLogado == null && !urlAutenticar.equalsIgnoreCase("/painel/ServletOi")) {
+				//RequestDispatcher redireciona = request.getRequestDispatcher("/login.jsp");
+				RequestDispatcher redireciona = request.getRequestDispatcher("/index.jsp?url="+urlAutenticar);
+				request.setAttribute("mensagem", "Por favor efetue o Login!");
+				redireciona.forward(request, response);
+				return;
+			}else {
+				chain.doFilter(request, response);
+			}
+			//Adicionar o Commit
+		}catch (Exception e) {
+			e.printStackTrace();
+			RequestDispatcher redireciona = request.getRequestDispatcher("error.jsp");
+			request.setAttribute("mensagem", e.getMessage());
 			redireciona.forward(request, response);
-			return;
-		}else {
-			chain.doFilter(request, response);
+			try {
+				//desfazer o commit
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
 		}
 	}
 
