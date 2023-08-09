@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="container">
-	<h3>Painel Administrativo - UC9 Desenvolvimento de Sistemas</h3>
+	<h3>Painel Administrativo - Cadastro de Usuário</h3>
 	<jsp:include page="navbar.jsp"></jsp:include>
 </div>
 </body>

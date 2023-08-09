@@ -46,7 +46,7 @@ public class ServletLogin extends HttpServlet {
 				
 				/*if (user01.getUsuario().equals("admin") && user01.getSenha().equals("admin")) {*/
 				if (loginRepository.validarLogin(user01)) {
-					request.getSession().setAttribute("usuario", user01);
+					request.getSession().setAttribute("usuario", user01.getUsuario());
 					if (url == null || url.equals("null")) {
 						url = "painel/inicio.jsp";
 					}
