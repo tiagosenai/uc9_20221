@@ -59,6 +59,7 @@ public class FilterAdmin extends HttpFilter implements Filter {
 				chain.doFilter(request, response);
 			}
 			//Adicionar o Commit
+			conn.commit();
 		}catch (Exception e) {
 			e.printStackTrace();
 			RequestDispatcher redireciona = request.getRequestDispatcher("error.jsp");
@@ -66,6 +67,7 @@ public class FilterAdmin extends HttpFilter implements Filter {
 			redireciona.forward(request, response);
 			try {
 				//desfazer o commit
+				conn.rollback();
 			} catch (Exception e2) {
 				// TODO: handle exception
 				e2.printStackTrace();

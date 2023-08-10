@@ -28,4 +28,14 @@
     <filter-name>FilterAdmin</filter-name>
     <url-pattern>/FilterAdmin</url-pattern>
   </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletUsuario</display-name>
+    <servlet-name>ServletUsuario</servlet-name>
+    <servlet-class>controller.ServletUsuario</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletUsuario</servlet-name>
+    <url-pattern>/ServletUsuario</url-pattern>
+  </servlet-mapping>
 </web-app>
