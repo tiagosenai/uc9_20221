@@ -25,5 +25,8 @@
 		<input type="submit" value="Salvar">
 	</form>
 </div>
+<div class="container">
+	<span id="mensagem">${mensagem}</span>
+</div>
 </body>
 </html>
