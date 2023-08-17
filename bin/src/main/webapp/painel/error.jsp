@@ -7,7 +7,6 @@
 <title>Erros do Sistema</title>
 </head>
 <body>
-<h4>Página de Erros</h4>
 <%
 	out.print(request.getAttribute("mensagem"));
 %>
